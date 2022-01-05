@@ -47,6 +47,10 @@ require "statusModals.php";
     }
  </style>
 <body>
+    <!-- HTML para Spinner-->
+    <div id="loader" class="lds-dual-ring hidden overlay"></div>
+    <!-- END HTML para Spinner -->
+
     <div class="wrapper">
         <div class="sidebar" data-image="<?=base_url() ?>assets/img/sidebar-5.jpg">
  
@@ -94,6 +98,16 @@ require "statusModals.php";
                     }
                     switch ($this->session->userdata('inicio_sesion')["id_rol"]) {
                         case 1:
+                            echo "<li class='"; if($page == 'cobranza'){echo 'active';} echo"'><!--<li>--><a class='nav-link active' href='".site_url("Cobranza")."'><i class='fa fa-credit-card'></i><p>&nbsp;&nbsp;Cobranza</p></a></li>";
+                            echo "<li class='"; if($page == 'expedientes'){echo 'active';} echo"'><!--<li>--><a class='nav-link active' href='".site_url("Expedientes")."'><i class='fa fa-folder-open'></i><p>&nbsp;&nbsp;Expedientes</p></a></li>";
+                            echo "<li class='"; if($page == 'caja'){echo 'active';} echo"'><!--<li>--><a class='nav-link active' href='".site_url("Caja")."'><i class='fa fa-archive'></i><p>&nbsp;&nbsp;Consulta caja</p></a></li>";
+                            echo "<li class='"; if($page == 'reportes'){echo 'active';} echo"'><!--<li>--><a class='nav-link active' href='".site_url("Reportes")."'><i class='fa fa-bars'></i><p>&nbsp;&nbsp;Reportes </p></a></li>";
+                            echo "<li class='"; if($page == 'influencer'){echo 'active';} echo"'><!--<li>--><a class='nav-link active' href='".site_url("Clientes/ventaInfluencer")."'><i class='fa fa-star'></i><p>&nbsp;&nbsp;Intercambio </p></a></li>";
+                            echo "<li class='"; if($page == 'nuevo_user'){echo 'active';} echo"'><!--<li>--><a class='nav-link active' href='".site_url("Usuarios/nuevo_usuario")."'><i class='fa fa-user-plus'></i><p>&nbsp;&nbsp;Nuevo Usuario </p></a></li>";
+                            echo "<li class='"; if($page == 'tarifas'){echo 'active';} echo"'><!--<li>--><a class='nav-link active' href='".site_url("Tarifas")."'><i class='fa fa-usd'></i><p>&nbsp;&nbsp;Tarifas</p></a></li>";
+
+                        //fa-star
+                        break;
                         case 2:
                         case 4:
                         echo "<li class='"; if($page == 'cobranza'){echo 'active';} echo"'><!--<li>--><a class='nav-link active' href='".site_url("Cobranza")."'><i class='fa fa-credit-card'></i><p>&nbsp;&nbsp;Cobranza</p></a></li>";
@@ -102,6 +116,7 @@ require "statusModals.php";
                         echo "<li class='"; if($page == 'reportes'){echo 'active';} echo"'><!--<li>--><a class='nav-link active' href='".site_url("Reportes")."'><i class='fa fa-bars'></i><p>&nbsp;&nbsp;Reportes </p></a></li>";
                         echo "<li class='"; if($page == 'influencer'){echo 'active';} echo"'><!--<li>--><a class='nav-link active' href='".site_url("Clientes/ventaInfluencer")."'><i class='fa fa-star'></i><p>&nbsp;&nbsp;Intercambio </p></a></li>";
                         echo "<li class='"; if($page == 'nuevo_user'){echo 'active';} echo"'><!--<li>--><a class='nav-link active' href='".site_url("Usuarios/nuevo_usuario")."'><i class='fa fa-user-plus'></i><p>&nbsp;&nbsp;Nuevo Usuario </p></a></li>";
+
                         //fa-star
                         break;
                         case 2:
@@ -192,7 +207,7 @@ require "statusModals.php";
             </nav>
 
             <div class="modal fade" id="modalReimprimirTk" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-e" role="document">
+                <div class="modal-dialog modal-dialog-e" role="document">
                     <div class="modal-content">
                         <div class="modal-header d-flex justify-content-end p-0 pr-2">
                             <a href="<?=base_url() ?>index.php/Home">x</a>
